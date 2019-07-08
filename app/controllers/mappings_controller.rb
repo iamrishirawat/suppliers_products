@@ -7,10 +7,10 @@ class MappingsController < ApplicationController
       @file_items = open_spreadsheet @import.file
       sheet = @file_items.sheet(0).parse(headers: true).drop(1)
       data_import sheet
-      redirect_to root_path
     rescue => e
-      p e 
+      flash[:error] = e.message
     end
+    redirect_to root_path
   end
 
   private

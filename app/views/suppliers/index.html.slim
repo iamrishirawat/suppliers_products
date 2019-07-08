@@ -2,6 +2,10 @@ div.view-page
 
   br
 
+  div.error-flash.row
+    - if flash[:error]
+      | Please check the following error: 
+      = flash[:error]
 
   - if @suppliers.any?
     table
