@@ -1,0 +1,27 @@
+div.view-page
+
+  br
+
+
+  - if @suppliers.any?
+    table
+      thead
+        tr
+          td
+          td
+            h4
+              | SUPPLIERS
+          td
+            h4
+              | Active/Total
+      tbody
+        - @suppliers.each do |s|
+          tr
+            td
+              = link_to "", supplier_path(s.id), class: "glyphicon glyphicon-play-circle"
+            td
+              = s.name
+            td
+              = "#{s.active}/#{s.total}"
+  - else
+    | No suppliers available.

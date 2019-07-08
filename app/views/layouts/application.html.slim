@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+html
+  head
+    title
+      | SuppliersProducts
+    
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
+  body
+    header
+      - if user_signed_in?
+        div.align-text-top
+          = link_to('Home', root_path, method: :get)
+          | &nbsp;
+          = link_to('Logout', destroy_user_session_path, method: :delete)
+      - else
+        div.align-text-bottom
+          = link_to('Sign in', new_user_session_path, method: :get)
+
+      
+      - if current_user && current_user.is_admin? && (controller_name == 'suppliers' && action_name == 'index')
+        button type="button" data-toggle="modal" data-target="#import" class="import-button"
+          | Import
+        
+
+
+      div.heading.container.justify-content-between
+        h1.align-middle
+          | LOGO
+
+    div.main-body
+      div.text-center
+        = yield
+
+    - if current_user && current_user.is_admin? && (controller_name == 'suppliers' && action_name == 'index')
+      #import.modal.fade data-backdrop="false"
+        .modal-dialog.modal-dialog-centered.modal-sm
+          .modal-content
+            .modal-header
+              <button type="button" class="close close-modal" data-dismiss="modal" aria-hidden="true">×</button>
+              .modal-title
+                h4
+                  | Import
+            .modal-body
+              = render 'mappings/new'

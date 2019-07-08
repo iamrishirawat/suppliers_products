@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  supplier: one
+  product: one
+  is_active: false
+
+two:
+  supplier: two
+  product: two
+  is_active: false

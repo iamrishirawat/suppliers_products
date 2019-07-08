@@ -1,0 +1,11 @@
+= form_for @items_import do |f|
+  - if @items_import.errors.any?
+    = pluralize(@items_import.errors.count, "error") 
+    | prevented us from importing your spreadsheet. Please update your spreadsheet and try agin.
+    ul
+      - @items_import.errors.full_messages.each do |msg|
+        li
+          = msg
+
+  = f.file_field :file, class: "upload-file", :required => true
+  = f.submit "Upload", class: "upload-button"

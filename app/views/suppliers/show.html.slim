@@ -1,0 +1,20 @@
+div.supplier-details
+  = image_tag("blank-polaroid-photos_1101-1164.jpg", :alt => "Supplier Logo", :size => '200x200')
+  = @supplier.name
+
+div.products-heading
+  | Products
+
+div.product-checkbox
+  input type="checkbox" name="inactive-checkbox" id="inactive-checkbox"
+    | Show Inactive Products
+
+div
+
+  div.row.container
+    - @supplier.products.each do |p|
+      - if p
+        div.col-md-3 class="active-#{p.mappings.first.is_active}"
+          = image_tag("blank-polaroid-photos_1101-1164.jpg", :alt => "Product Logo", :size => '200x200')
+          br
+          = p.title

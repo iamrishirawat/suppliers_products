@@ -1,0 +1,52 @@
+<div class="devise-form">
+  <h4>Sign up</h4>
+
+  <%= devise_error_messages! %>
+
+  <div class="devise-user">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
+      <div class="field form-group required">
+        <%= f.label :name %><br />
+        <%= f.text_field :name, autofocus: true, autocomplete: "name", :required => true %>
+      </div>
+
+      <div class="field form-group required">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autocomplete: "email", :required => true %>
+      </div>
+
+      <div class="field form-group required">
+        <%= f.label :phone %><br />
+        <%= f.text_field :phone, autocomplete: "phone", :required => true %>
+      </div>
+
+      <div class="field form-group required">
+        <%= f.label :city %><br />
+        <%= f.text_field :city, autocomplete: "city", :required => true %>
+      </div>
+
+      <div class="control-group field form-group required">
+        <label class="control-label">Country</label>
+        <div class="controls">
+           <%= f.select :country, ["India", "USA", "Australia", "New Zealand"] %>
+        </div>
+     </div>
+
+      <div class="field form-group required">
+        <%= f.label :user_name %><br />
+        <%= f.text_field :user_name, autocomplete: "user_name", :required => true %>
+      </div>
+
+      <div class="field form-group">
+        <%= f.label :password %><br />
+        <%= f.password_field :password, autocomplete: "new-password", :required => true, minlength: 6 %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Register", class: "devise-button" %>
+      </div>
+    <% end %>
+    <br/>
+  </div>
+</div>
